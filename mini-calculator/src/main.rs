@@ -31,49 +31,63 @@ fn modulo_number(value_one: f64, value_two:f64) -> f64 {
 
 
 fn main() {
-    let mut first_number = String::new();
-    println!("Enter number #1:");
-    io::stdin()
-    .read_line(&mut first_number)
-    .expect("Failed to read input");
-    let first_number: f64 = first_number
-    .trim()
-    .parse()
-    .expect("Failed to convert to int");
 
 
-    let mut operator = String::new();
-    println!("Enter operator:");
-    io::stdin()
-    .read_line(&mut operator)
-    .expect("Failed to read input");
-    let operator = operator
-    .trim();
+    loop {
 
-    let mut second_number = String::new();
-    println!("Enter number #2:");
-    io::stdin()
-    .read_line(&mut second_number)
-    .expect("Failed to read input");
-    let second_number: f64 = second_number
-    .trim()
-    .parse()
-    .expect("Failed to convert to int");
+        let mut first_number = String::new();
+        println!("Enter number #1:");
+        io::stdin()
+        .read_line(&mut first_number)
+        .expect("Failed to read input");
+        if first_number.trim() == "exit" {
+            break;
+        }
+        let first_number: f64 = first_number
+        .trim()
+        .parse()
+        .expect("Failed to convert to int");
 
-    if operator == "+" {
-        let result = add_numbers(first_number, second_number);
-        println!("The result of {} {} {} is: {}", first_number, operator, second_number, result);
-    } else if operator == "-" {
-        let result = subtract_numbers(first_number, second_number);
-        println!("The result of {} {} {} is: {}", first_number, operator, second_number, result);
-    } else if operator == "*" {
-        let result = multiply_numbers(first_number, second_number);
-        println!("The result of {} {} {} is: {}", first_number, operator, second_number, result);
-    } else if operator == "/" {
-        let result = divide_number(first_number, second_number);
-        println!("The result of {} {} {} is: {}", first_number, operator, second_number, result);
-    } else if operator == "%" {
-        let result = modulo_number(first_number, second_number);
-        println!("The result of {} {} {} is: {}", first_number, operator, second_number, result);
+
+        let mut operator = String::new();
+        println!("Enter operator:");
+        io::stdin()
+        .read_line(&mut operator)
+        .expect("Failed to read input");
+        if operator.trim() == "exit" {
+            break;
+        }
+        let operator = operator
+        .trim();
+
+        let mut second_number = String::new();
+        println!("Enter number #2:");
+        io::stdin()
+        .read_line(&mut second_number)
+        .expect("Failed to read input");
+        if second_number.trim() == "exit" {
+            break;
+        }
+        let second_number: f64 = second_number
+        .trim()
+        .parse()
+        .expect("Failed to convert to int");
+
+        if operator == "+" {
+            let result = add_numbers(first_number, second_number);
+            println!("The result of {} {} {} is: {}", first_number, operator, second_number, result);
+        } else if operator == "-" {
+            let result = subtract_numbers(first_number, second_number);
+            println!("The result of {} {} {} is: {}", first_number, operator, second_number, result);
+        } else if operator == "*" {
+            let result = multiply_numbers(first_number, second_number);
+            println!("The result of {} {} {} is: {}", first_number, operator, second_number, result);
+        } else if operator == "/" {
+            let result = divide_number(first_number, second_number);
+            println!("The result of {} {} {} is: {}", first_number, operator, second_number, result);
+        } else if operator == "%" {
+            let result = modulo_number(first_number, second_number);
+            println!("The result of {} {} {} is: {}", first_number, operator, second_number, result);
+        }
     }
 }
